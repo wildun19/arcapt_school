@@ -57,7 +57,32 @@
                     </div>
                 </div>
                 <div class="card-body">
-                Check the Header part you can find Legacy vesion of style.
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Nama</th>
+                                    <th>Email</th>
+                                    <th>Role</th>
+                                    <th>
+                                        <i class="fas fa-cog"></i>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($guru as $item)
+                                <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $item->name }}</td>
+                                    <td>{{ $item->email }}</td>
+                                    <td>{{ $item->role }}</td>
+                                    <td></td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
 
             </div>
