@@ -57,6 +57,21 @@
                     </div>
                 </div>
                 <div class="card-body">
+
+                    <div class="mb-3 d-flex justify-content-between">
+                        <div class="col-2">
+                            <select wire:model.live="paginate" class="form-control">
+                                <option value="10">10</option>
+                                <option value="25">25</option>
+                                <option value="50">50</option>
+                                <option value="100">100</option>
+                            </select>
+                        </div>
+                        <div>
+                            <input wire:model.live="search" type="text" class="form-control" placeholder="search">
+                        </div>
+                    </div>
+
                     <div class="table-responsive">
                         <table class="table table-hover">
                             <thead>
@@ -73,7 +88,7 @@
                             <tbody>
                                 @foreach ($guru as $item)
                                 <tr>
-                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ ($guru->currentPage() - 1) * $guru->perPage() + $loop->iteration }}</td>
                                     <td>{{ $item->name }}</td>
                                     <td>{{ $item->email }}</td>
                                     <td>{{ $item->role }}</td>
@@ -82,6 +97,7 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        {{ $guru->links() }}
                     </div>
                 </div>
 
