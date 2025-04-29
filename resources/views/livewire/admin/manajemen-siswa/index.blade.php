@@ -33,10 +33,9 @@
                 <div class="card-header">
                     <div class="d-flex justify-content-between">
                         <div>
-                            <button class="btn btn-sm btn-primary">
-                                <i class="fas fa-plus mr-1"></i>
-                                tambah data
-                            </button>
+                            <a href="{{ route('admin.manajemen-siswa.create') }}" class="btn btn-sm btn-primary">
+                                <i class="fas fa-plus"></i>tambah data
+                            </a>
                         </div>
                         <div class="btn-group dropleft">
                             <button type="button" class="btn btn-sm btn-warning dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
@@ -93,9 +92,9 @@
                                     <td>{{ $item->email }}</td>
                                     <td>{{ $item->role }}</td>
                                     <td>
-                                        <button class="btn btn-sm btn-warning">
+                                        <a href="{{ route('admin.manajemen-siswa.edit', $item->id) }}" class="btn btn-sm btn-warning">
                                             <i class="fas fa-edit"></i>
-                                        </button>
+                                        </a>
                                         <button class="btn btn-sm btn-danger">
                                             <i class="fas fa-trash"></i>
                                         </button>

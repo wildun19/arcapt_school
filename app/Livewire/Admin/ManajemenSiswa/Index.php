@@ -12,6 +12,7 @@ class Index extends Component
     protected $paginationTheme = 'bootstrap';
     public $paginate = "10";
     public $search = '';
+
     public function render()
     {
         $siswa = array(

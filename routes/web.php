@@ -8,6 +8,13 @@ Route::get('/', function () {
 });
 
 Route::view('admin/manajemen-siswa/index', 'admin.manajemen-siswa.index')->name('admin.manajemen-siswa.index');
+Route::get('admin/manajemen-siswa/edit/{id}', function ($id) {
+    return view('admin.manajemen-siswa.edit', ['id' => $id]);
+})->name('admin.manajemen-siswa.edit');
+Route::get('admin/manajemen-siswa/create', function () {
+    return view('admin.manajemen-siswa.create');
+})->name('admin.manajemen-siswa.create');
+
 Route::view('admin/manajemen-guru/index', 'admin.manajemen-guru.index')->name('admin.manajemen-guru.index');
 Route::view('admin/manajemen-jadwal/index', 'admin.manajemen-jadwal.index')->name('admin.manajemen-jadwal.index');
 Route::view('admin/manajemen-kelas/index', 'admin.manajemen-kelas.index')->name('admin.manajemen-kelas.index');

@@ -9,24 +9,24 @@
         <link href="{{ asset('adminlte3/dist/img/logo.png') }}" rel="icon">
         <link href="{{ asset('adminlte3/dist/img/logo.png') }}" rel="apple-touch-icon">
 
-        @include('layouts.style')
+        @include('components.layouts.style')
         @livewireStyles
 
     </head>
     <body class="hold-transition sidebar-mini">
         <div class="wrapper">
 
-            @include('layouts.navbar')
+            @include('components.layouts.navbar')
 
-            @include('layouts.sidebar')
+            @include('components.layouts.sidebar')
 
             @yield('content')
 
-            @include('layouts.footer')
+            @include('components.layouts.footer')
 
         </div>
 
-        @include('layouts.script')
+        @include('components.layouts.script')
         @livewireScripts
 
     </body>

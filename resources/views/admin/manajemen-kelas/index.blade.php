@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('components.layouts.app')
 
 @section('title', 'Management Kelas')
 @section('menuManagementKelas', 'active')
