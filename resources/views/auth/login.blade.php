@@ -1,5 +1,5 @@
 @extends('components.auth.app')
-@section('title', 'login')
+@section('title', 'Login')
 
 @section('content')
     @livewire('auth.login')

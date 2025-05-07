@@ -13,7 +13,7 @@
       <li class="nav-item dropdown user-menu">
         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
             <img src="{{ asset('adminlte3/dist/img/user2-160x160.jpg') }}" class="user-image img-circle" alt="User Image">
-            <span class="d-none d-md-inline">Arcapt</span>
+            <span class="d-none d-md-inline">{{ auth()->user()->name }}</span>
         </a>
         <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
           <!-- User image -->
@@ -21,13 +21,16 @@
             <img src="{{ asset('adminlte3/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
 
             <p>
-              Arcapt Teacher
-              <div><span class="badge badge-success">Admin</span></div>
+                {{ auth()->user()->name }}
+                <div><span class="badge badge-success">{{ auth()->user()->role }}</span></div>
             </p>
           </li>
           <!-- Menu Footer-->
           <li class="user-footer">
-            <a href="#" class="btn btn-default btn-flat">Profile</a>
+            <a href="#" class="btn btn-sm btn-default btn-flat">
+                <i class="fas fa fa-user"></i>
+                Profile
+            </a>
             <a href="#" class="btn btn-sm btn-danger float-right">
                 <i class="fas fa-sign-out-alt"></i>
                 Logout</a>

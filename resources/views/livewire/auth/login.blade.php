@@ -8,26 +8,32 @@
             <div class="card-body login-card-body">
                 <h2 class="login-box-msg">Login</h2>
 
-                <form action="../../index3.html" method="post">
-                    <div class="input-group mb-3">
-                        <input type="email" class="form-control" placeholder="Email">
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fas fa-envelope"></span>
-                            </div>
-                        </div>
+                <form wire:submit="login">
+                    @csrf
+                    <div class="row mt-2">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" wire:model="email" class="form-control @error('email')
+                            is-invalid
+                        @enderror" placeholder="Massukkan Email">
+                        @error('email')
+                        <small class="text-danger">
+                            {{ $message }}
+                        </small>
+                        @enderror
                     </div>
-                    <div class="input-group">
-                        <input type="password" class="form-control" placeholder="Password">
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fas fa-lock"></span>
-                            </div>
-                        </div>
+
+                    <div class="row mt-2">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" wire:model="password" class="form-control @error('password')
+                            is-invalid
+                        @enderror" placeholder="Massukkan Password">
+                        @error('password')
+                        <small class="text-danger">
+                            {{ $message }}
+                        </small>
+                        @enderror
                     </div>
-                    <p class="dropleft">
-                        <a href="#">I forgot my password</a>
-                    </p>
+
                     <div class="row">
                         <div class="col-8"></div>
                         <div class="col-4">
