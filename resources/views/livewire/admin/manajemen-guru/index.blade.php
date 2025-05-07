@@ -7,7 +7,7 @@
                     <div class="col-sm-6">
                         <h3>
                             <img class="nav-icon fas" src="{{ asset('assets/icons/Users.svg') }}"></img>
-                            @yield('title')
+                            {{ $title }}
                         </h2>
                     </div>
                     <div class="col-sm-6">
@@ -18,7 +18,7 @@
                                 </a>
                             </li>
                             <li class="breadcrumb-item active">
-                                @yield('title')
+                                {{ $title }}
                             </li>
                         </ol>
                     </div>
@@ -33,9 +33,11 @@
                 <div class="card-header">
                     <div class="d-flex justify-content-between">
                         <div>
-                            <button class="btn btn-sm btn-primary">
-                                <i class="fas fa-plus mr-1"></i>
-                                tambah data
+                            {{-- <a href="{{ route('admin.manajemen-siswa.create') }}" class="btn btn-sm btn-primary">
+                                <i class="fas fa-plus mr-1"></i>tambah data
+                            </a> --}}
+                            <button  wire:click="create" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#createModel">
+                                <i class="fas fa-plus mr-1"></i>tambah data
                             </button>
                         </div>
                         <div class="btn-group dropleft">
@@ -92,7 +94,17 @@
                                     <td>{{ $item->name }}</td>
                                     <td>{{ $item->email }}</td>
                                     <td>{{ $item->role }}</td>
-                                    <td></td>
+                                    <td>
+                                        {{-- <a href="{{ route('admin.manajemen-siswa.edit', $item->id) }}" class="btn btn-sm btn-warning">
+                                            <i class="fas fa-edit"></i>
+                                        </a> --}}
+                                        <button wire:click="edit({{ $item->id }})" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#editModel">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                        <button wire:click="destroy({{ $item->id }})" class="btn btn-sm btn-danger">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </td>
                                 </tr>
                                 @endforeach
                             </tbody>
@@ -101,9 +113,75 @@
                     </div>
                 </div>
 
+                {{-- @if ($confirmDelete)
+                    <div class="modal fade show d-block" tabindex="-1" role="dialog" style="background: rgba(0,0,0,0.5);">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header bg-danger text-white">
+                                    <h5 class="modal-title">Konfirmasi Hapus</h5>
+                                    <button type="button" class="close" wire:click="batalDelete" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Apakah kamu yakin ingin menghapus data ini? Tindakan ini tidak dapat dibatalkan.</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" wire:click="destroy" class="btn btn-danger">Ya, Hapus</button>
+                                    <button type="button" wire:click="batalDelete" class="btn btn-secondary">Batal</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endif --}}
+
             </div>
 
         </section>
+        {{-- create Model --}}
+        @include('livewire.admin.manajemen-guru.tambah')
+
+        @script
+            <script>
+                $wire.on('closeCreateModel', ()=>{
+                    $('#createModel').modal('hide');
+                    Swal.fire({
+                        title: "Success",
+                        text: "Data Berhasil Ditambah",
+                        icon: "success"
+                    });
+                });
+            </script>
+        @endscript
+
+        {{-- Edit Model --}}
+        @include('livewire.admin.manajemen-guru.ubah')
+
+        @script
+            <script>
+                $wire.on('closeEditModel', ()=>{
+                    $('#editModel').modal('hide');
+                    Swal.fire({
+                        title: "Success",
+                        text: "Data Berhasil Di Update",
+                        icon: "success"
+                    });
+                });
+            </script>
+        @endscript
+
+        {{-- delete Model --}}
+        @script
+            <script>
+                $wire.on('deleteSuccess', ()=>{
+                    Swal.fire({
+                        title: "Success",
+                        text: "Data Berhasil Dihapus",
+                        icon: "success"
+                    });
+                });
+            </script>
+        @endscript
     </div>
 
 </div>

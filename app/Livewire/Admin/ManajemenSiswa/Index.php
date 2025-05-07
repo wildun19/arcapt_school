@@ -108,7 +108,7 @@ class Index extends Component
     public function render()
     {
         $siswa = array(
-            'title' => 'Managemen User',
+            'title' => 'Managemen Siswa',
             'siswa' => User::where('role', 'Siswa')->where(function($query) {
                 $query->where('name', 'like', '%'.$this->search.'%')
                 ->orWhere('email', 'like', '%'.$this->search.'%');
