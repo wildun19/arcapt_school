@@ -1,11 +1,20 @@
 <?php
 
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Maatwebsite\Excel\Row;
 
 Route::get('/', function () {
     return view('auth.login');
 })->name('login')->middleware('guest');
+
+Route::get('logout', function (Request $request) {
+    Auth::logout(); 
+    $request->session()->invalidate();
+    $request->session()->regenerateToken();
+    return redirect()->route('login');
+})->name('logout')->middleware('auth');
 
 Route::middleware(['auth'])->group(function () {
 

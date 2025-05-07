@@ -31,7 +31,7 @@
                 <i class="fas fa fa-user"></i>
                 Profile
             </a>
-            <a href="#" class="btn btn-sm btn-danger float-right">
+            <a href="{{ route('logout') }}" class="btn btn-sm btn-danger float-right">
                 <i class="fas fa-sign-out-alt"></i>
                 Logout</a>
           </li>
